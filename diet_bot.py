@@ -17,7 +17,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
 LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-DB_PATH = os.environ.get("DB_PATH", "/data/diet_records.db")
+DB_PATH = os.environ.get("DB_PATH", "/tmp/diet_records.db")
 
 # 知識ベース読み込み
 with open('diet_knowledge.txt', 'r', encoding='utf-8') as f:
