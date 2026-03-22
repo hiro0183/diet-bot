@@ -488,7 +488,17 @@ def send_daily_support(user_id):
         system=system,
         messages=[{"role": "user", "content": prompt}]
     )
-    message = f"🌙 {date.today().strftime('%m/%d')}のサポート\n\n" + res.content[0].text
+    # 未記録項目への促しメッセージ
+    prompts = []
+    if not today.get('bowel') and today.get('bowel') != 0:
+        prompts.append("💩 便通はありましたか？\n→「便あり」または「便なし」と送ってください")
+    if user.get('gender') == '女性' and not today.get('menstruation'):
+        prompts.append("🌸 生理日ですか？\n→「生理あり」または「生理なし」と送ってください")
+    if not today.get('mood'):
+        prompts.append("💬 今日の気持ちを教えてください😊\n例）体重が落ちてきて嬉しい / モチベーション落ちてきた / 褒めて欲しい　など、なんでもOKです！\n→「気持ち：○○」と送ってください")
+    prompt_text = ("\n\n📝 よかったら記録してみてね\n" + "\n\n".join(prompts)) if prompts else ""
+
+    message = f"🌙 {date.today().strftime('%m/%d')}のサポート\n\n" + res.content[0].text + prompt_text
 
     configuration = Configuration(access_token=LINE_CHANNEL_ACCESS_TOKEN)
     with ApiClient(configuration) as api_client:
