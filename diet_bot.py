@@ -183,6 +183,14 @@ def parse_message(user_id, text):
     if text in ['マイID', 'myid', '自分のID', 'ID確認', 'マイid']:
         return f"あなたのUser IDは：\n{user_id}"
 
+    # テスト送信
+    if text == 'テスト送信':
+        try:
+            send_daily_support(user_id)
+            return "テスト送信しました！"
+        except Exception as e:
+            return f"送信エラー：{str(e)}"
+
     # ===== 初回セットアップ =====
     if not user or user['setup_step'] != 'done':
         return handle_setup(user_id, text, user)
