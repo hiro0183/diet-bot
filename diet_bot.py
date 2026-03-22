@@ -14,9 +14,9 @@ import anthropic
 from apscheduler.schedulers.background import BackgroundScheduler
 
 # 設定（環境変数から取得）
-LINE_CHANNEL_SECRET = os.environ.get("LINE_CHANNEL_SECRET")
-LINE_CHANNEL_ACCESS_TOKEN = os.environ.get("LINE_CHANNEL_ACCESS_TOKEN")
-ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
+LINE_CHANNEL_SECRET = (os.environ.get("LINE_CHANNEL_SECRET") or "").strip().replace('\n', '').replace('\r', '')
+LINE_CHANNEL_ACCESS_TOKEN = (os.environ.get("LINE_CHANNEL_ACCESS_TOKEN") or "").strip().replace('\n', '').replace('\r', '')
+ANTHROPIC_API_KEY = (os.environ.get("ANTHROPIC_API_KEY") or "").strip().replace('\n', '').replace('\r', '')
 DB_PATH = os.environ.get("DB_PATH", "/tmp/diet_records.db")
 
 # 知識ベース読み込み
