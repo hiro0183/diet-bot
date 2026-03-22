@@ -13,10 +13,10 @@ from linebot.v3.webhooks import MessageEvent, TextMessageContent
 import anthropic
 from apscheduler.schedulers.background import BackgroundScheduler
 
-# 設定（環境変数から取得）
-LINE_CHANNEL_SECRET = (os.environ.get("LINE_CHANNEL_SECRET") or "").strip().replace('\n', '').replace('\r', '')
-LINE_CHANNEL_ACCESS_TOKEN = (os.environ.get("LINE_CHANNEL_ACCESS_TOKEN") or "+CFa3MLUGf/qJt6/k9oRe9L5X+6mPSsjkDH3EuuZp8Pg5DvGFuzfXVbHiunu2ucNhUezOiy+7m9wakrU8RFIy4rZdMj76t+7j9T4wn5T6oHE1KCG4BcAm6mxT6W/+xhJkcj0y2E9VY632Yu+6mNjfwdB04t89/1O/w1cDnyilFU=").strip().replace('\n', '').replace('\r', '')
-ANTHROPIC_API_KEY = (os.environ.get("ANTHROPIC_API_KEY") or "").strip().replace('\n', '').replace('\r', '')
+# 設定
+LINE_CHANNEL_SECRET = "f903040127a5051cf0722803698b1b4b"
+LINE_CHANNEL_ACCESS_TOKEN = "+CFa3MLUGf/qJt6/k9oRe9L5X+6mPSsjkDH3EuuZp8Pg5DvGFuzfXVbHiunu2ucNhUezOiy+7m9wakrU8RFIy4rZdMj76t+7j9T4wn5T6oHE1KCG4BcAm6mxT6W/+xhJkcj0y2E9VY632Yu+6mNjfwdB04t89/1O/w1cDnyilFU="
+ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY", "")
 DB_PATH = os.environ.get("DB_PATH", "/tmp/diet_records.db")
 
 # 知識ベース読み込み
